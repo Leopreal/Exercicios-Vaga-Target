@@ -1,3 +1,4 @@
+console.log("EXERCICIO 1");
 // exercicio 1
 
 let indice = 13;
@@ -10,6 +11,8 @@ while (k < indice) {
 
 console.log(soma);
 
+console.log("");
+console.log("EXERCICIO 2");
 //--------------------------------------------------------
 
 // exercicio 2
@@ -39,58 +42,182 @@ if (éFibonnaci(num2)) {
 } else {
   console.log("numero nao pertece a sequencia");
 }
+console.log("");
+console.log("EXERCICIO 3");
 //--------------------------------------------------------
 
 // exercicio 3
-const faturamentoAnual = [
-  100, 200, 0, 150, 300, 250, 0, 180, 220, 280, 200, 150, 0, 175, 225, 275, 250,
-  300, 0, 200, 150, 250, 275, 225, 0, 190, 210, 220, 300, 175, 0, 200, 180, 220,
-  280, 250, 0, 150, 175, 225, 275, 200, 0, 190, 225, 250, 275, 225, 0, 200, 175,
-  225, 275, 250, 0, 200, 225, 275, 250, 275, 0, 200, 220, 280, 250, 275, 0, 175,
-  200, 250, 275, 200, 0, 200, 220, 280, 250, 300, 0, 175, 200, 250, 275, 200, 0,
-  190, 210, 220, 300, 175, 0, 200, 225, 275, 250, 275, 0, 190, 225, 250, 275,
-  225, 0, 200, 180, 220, 280, 250, 0, 150, 175, 225, 275, 200, 0, 190, 225, 250,
-  275, 225, 0, 200, 220, 280, 250, 275, 0, 175, 200, 250, 275, 200, 0, 200, 220,
-  280, 250, 300, 0, 175, 200, 250, 275, 200, 0, 190, 210, 220, 300, 175, 0, 200,
-  225, 275, 250, 275, 0, 190, 225, 250, 275, 225, 0, 200, 180, 220, 280, 250, 0,
-  150, 175, 225, 275, 200, 0,
+const dados = [
+  {
+    dia: 1,
+    valor: 22174.1664,
+  },
+  {
+    dia: 2,
+    valor: 24537.6698,
+  },
+  {
+    dia: 3,
+    valor: 26139.6134,
+  },
+  {
+    dia: 4,
+    valor: 0.0,
+  },
+  {
+    dia: 5,
+    valor: 0.0,
+  },
+  {
+    dia: 6,
+    valor: 26742.6612,
+  },
+  {
+    dia: 7,
+    valor: 0.0,
+  },
+  {
+    dia: 8,
+    valor: 42889.2258,
+  },
+  {
+    dia: 9,
+    valor: 46251.174,
+  },
+  {
+    dia: 10,
+    valor: 11191.4722,
+  },
+  {
+    dia: 11,
+    valor: 0.0,
+  },
+  {
+    dia: 12,
+    valor: 0.0,
+  },
+  {
+    dia: 13,
+    valor: 3847.4823,
+  },
+  {
+    dia: 14,
+    valor: 373.7838,
+  },
+  {
+    dia: 15,
+    valor: 2659.7563,
+  },
+  {
+    dia: 16,
+    valor: 48924.2448,
+  },
+  {
+    dia: 17,
+    valor: 18419.2614,
+  },
+  {
+    dia: 18,
+    valor: 0.0,
+  },
+  {
+    dia: 19,
+    valor: 0.0,
+  },
+  {
+    dia: 20,
+    valor: 35240.1826,
+  },
+  {
+    dia: 21,
+    valor: 43829.1667,
+  },
+  {
+    dia: 22,
+    valor: 18235.6852,
+  },
+  {
+    dia: 23,
+    valor: 4355.0662,
+  },
+  {
+    dia: 24,
+    valor: 13327.1025,
+  },
+  {
+    dia: 25,
+    valor: 0.0,
+  },
+  {
+    dia: 26,
+    valor: 0.0,
+  },
+  {
+    dia: 27,
+    valor: 25681.8318,
+  },
+  {
+    dia: 28,
+    valor: 1718.1221,
+  },
+  {
+    dia: 29,
+    valor: 13220.495,
+  },
+  {
+    dia: 30,
+    valor: 8414.61,
+  },
 ];
 
-const TirandoOsZeros = faturamentoAnual.filter(
-  (faturamento) => faturamento > 0
-);
+let menorFaturamento = 0;
+let maiorFaturamento = 0;
 
-const menor_faturamento = Math.min(...TirandoOsZeros);
-const IndiceDoMenor = faturamentoAnual.indexOf(menor_faturamento); // achando o indice do vetor para saber o dia
-const DiaDoMenor = IndiceDoMenor + 1;
+for (let i = 0; i < dados.length; i++) {
+  if (dados[i].valor > 0) {
+    if (menorFaturamento === 0 || dados[i].valor < menorFaturamento.valor) {
+      // percorrendo o array até achar o menor valor
+      menorFaturamento = dados[i];
+    }
 
-const maior_faturamento = Math.max(...TirandoOsZeros);
-const IndiceDoMaior = faturamentoAnual.indexOf(maior_faturamento); // achando o indice do vetor para saber o dia
-const DiaDoMaior = IndiceDoMaior + 1;
+    if (maiorFaturamento === 0 || dados[i].valor > maiorFaturamento.valor) {
+      // percorrendo o array até achar o maior valor
+      maiorFaturamento = dados[i];
+    }
+  }
+}
 
-const somaFaturamento = TirandoOsZeros.reduce(
-  (ValorAcumulado, ValorAtual) => ValorAcumulado + ValorAtual,
-  0
-);
+if (menorFaturamento && maiorFaturamento) {
+  console.log(
+    `Menor faturamento: Dia ${
+      menorFaturamento.dia
+    } com valor de R$ ${menorFaturamento.valor.toFixed(2)}`
+  );
+  console.log(
+    `Maior faturamento: Dia ${
+      maiorFaturamento.dia
+    } com valor de R$ ${maiorFaturamento.valor.toFixed(2)}`
+  );
+}
 
-const mediaMensal = somaFaturamento / TirandoOsZeros.length;
+const dadosFiltrados = dados.filter((i) => i.valor > 0); // filtrando os dias que são maiores que 0
 
-const DiaAcimaDaMedia = TirandoOsZeros.filter(
-  (faturamento) => faturamento > mediaMensal
-).length;
+const somaTotal = dadosFiltrados.reduce((soma, i) => soma + i.valor, 0);
 
-console.log(
-  `o dia do menor faturamento foi no dia ${DiaDoMenor} com o valor de ${menor_faturamento}`
-);
-console.log(
-  `o dia do menor faturamento foi no dia ${DiaDoMaior} com o valor de ${maior_faturamento}`
-);
+const media = somaTotal / dadosFiltrados.length;
 
-console.log(
-  `a media foi ${mediaMensal.toFixed(
-    2
-  )} o dia que ficou acima da media foi ${DiaAcimaDaMedia} `
-);
+console.log(`Soma total: R$ ${somaTotal.toFixed(2)}`);
+console.log(`Média: R$ ${media.toFixed(2)}`);
+
+const ValorAcimaDaMedia = dadosFiltrados.filter((i) => i.valor > media);
+
+console.log("Dias com faturamento acima da média:");
+ValorAcimaDaMedia.forEach((item) => {
+  // fazendo um loop percorrendo todos os valores que estao acima da media
+  console.log(`Dia ${item.dia}: R$ ${item.valor.toFixed(2)}`);
+});
+console.log("");
+console.log("EXERCICIO 4");
 
 //-----------------------------------------------------------------------------------------------
 // exercicio 4
@@ -132,6 +259,8 @@ for (const [estado, percentual] of Object.entries(percentualRepresentacao)) {
   // passando por cada estado e colocando a sua impresssao
   console.log(`${estado}: ${percentual}%`);
 }
+console.log("");
+console.log("EXERCICIO 5");
 // ----------------------------------------------------------------------
 // exercicio 5
 function inverterString(string) {
